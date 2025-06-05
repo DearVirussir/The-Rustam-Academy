@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamid Khan | The Rustam Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        :root {
+            --neon-pink: #ff2a6d;
+            --neon-blue: #05d9e8;
+            --neon-purple: #d300c5;
+            --dark-bg: #0d0221;
+        }
+        
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        .neon-text-pink {
+            text-shadow: 0 0 10px var(--neon-pink), 0 0 20px var(--neon-pink);
+            animation: pulse-pink 2s infinite alternate;
+        }
+        
+        .neon-text-blue {
+            text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue);
+            animation: pulse-blue 2s infinite alternate;
+        }
+        
+        @keyframes pulse-pink {
+            from { text-shadow: 0 0 5px var(--neon-pink), 0 0 10px var(--neon-pink); }
+            to { text-shadow: 0 0 15px var(--neon-pink), 0 0 30px var(--neon-pink); }
+        }
+        
+        @keyframes pulse-blue {
+            from { text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue); }
+            to { text-shadow: 0 0 15px var(--neon-blue), 0 0 30px var(--neon-blue); }
+        }
+        
+        .neon-border-pink {
+            box-shadow: 0 0 15px var(--neon-pink), inset 0 0 10px var(--neon-pink);
+            border: 1px solid var(--neon-pink);
+            animation: border-glow-pink 3s infinite alternate;
+        }
+        
+        .neon-border-blue {
+            box-shadow: 0 0 15px var(--neon-blue), inset 0 0 10px var(--neon-blue);
+            border: 1px solid var(--neon-blue);
+            animation: border-glow-blue 3s infinite alternate;
+        }
+        
+        @keyframes border-glow-pink {
+            from { box-shadow: 0 0 5px var(--neon-pink), inset 0 0 5px var(--neon-pink); }
+            to { box-shadow: 0 0 20px var(--neon-pink), inset 0 0 15px var(--neon-pink); }
+        }
+        
+        @keyframes border-glow-blue {
+            from { box-shadow: 0 0 5px var(--neon-blue), inset 0 0 5px var(--neon-blue); }
+            to { box-shadow: 0 0 20px var(--neon-blue), inset 0 0 15px var(--neon-blue); }
+        }
+        
+        .teacher-card {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .teacher-card:hover {
+            transform: rotateY(10deg) rotateX(5deg) scale(1.05);
+            box-shadow: 0 0 30px var(--neon-blue);
+            animation: card-float 3s ease-in-out infinite;
+        }
+        
+        @keyframes card-float {
+            0%, 100% { transform: rotateY(10deg) rotateX(5deg) scale(1.05) translateY(0); }
+            50% { transform: rotateY(10deg) rotateX(5deg) scale(1.05) translateY(-10px); }
+        }
+        
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            position: relative;
+            margin: 10% auto;
+            width: 90%;
+            max-width: 500px;
+            background: linear-gradient(145deg, #0d0221, #1a0538);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 50px var(--neon-pink);
+            animation: slideUp 0.4s;
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: var(--neon-pink);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .close-modal:hover {
+            transform: rotate(90deg);
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+        
+        .input-field {
+            background: rgba(13, 2, 33, 0.7);
+            border: 1px solid var(--neon-blue);
+            transition: all 0.3s;
+            color: white;
+        }
+        
+        .input-field:focus {
+            box-shadow: 0 0 15px var(--neon-blue);
+            border-color: var(--neon-pink);
+            animation: input-pulse 1.5s infinite;
+        }
+        
+        @keyframes input-pulse {
+            0%, 100% { box-shadow: 0 0 5px var(--neon-blue); }
+            50% { box-shadow: 0 0 20px var(--neon-blue); }
+        }
+        
+        .glow-button {
+            position: relative;
+            overflow: hidden;
+            font-weight: bold;
+            color: #000 !important;
+            text-shadow: 0 0 5px rgba(255,255,255,0.7);
+            transition: all 0.3s;
+        }
+        
+        .glow-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                rgba(255, 255, 255, 0) 0%,
+                rgba(255, 255, 255, 0.7) 50%,
+                rgba(255, 255, 255, 0) 100%
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(30deg); }
+            100% { transform: translateX(100%) rotate(30deg); }
+        }
+        
+        .glow-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(5, 217, 232, 0.4);
+        }
+        
+        .contact-link {
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .contact-link:hover {
+            text-shadow: 0 0 10px currentColor;
+            transform: translateX(5px) scale(1.05);
+        }
+        
+        .course-card {
+            transition: all 0.3s;
+            transform-style: preserve-3d;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 20px 30px rgba(5, 217, 232, 0.3);
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(90deg, var(--neon-pink), var(--neon-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .section-title:hover::after {
+            transform: scaleX(1);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Particle.js Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-80 backdrop-blur-md py-4 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl neon-text-blue floating">RK</span>
+                <span class="text-xl font-bold">Rustam Academy</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-white hover:text-neon-blue transition-colors">Home</a>
+                <a href="#about" class="text-white hover:text-neon-blue transition-colors">About</a>
+                <a href="#teachers" class="text-white hover:text-neon-blue transition-colors">Teachers</a>
+                <a href="#courses" class="text-white hover:text-neon-blue transition-colors">Courses</a>
+                <a href="#contact" class="text-white hover:text-neon-blue transition-colors">Contact</a>
+            </div>
+            <button class="md:hidden text-white text-2xl" id="mobile-menu-button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed top-16 left-0 right-0 bg-black bg-opacity-90 z-40 py-4 px-6 backdrop-blur-md">
+        <div class="flex flex-col space-y-4">
+            <a href="#home" class="text-white hover:text-neon-blue transition-colors">Home</a>
+            <a href="#about" class="text-white hover:text-neon-blue transition-colors">About</a>
+            <a href="#teachers" class="text-white hover:text-neon-blue transition-colors">Teachers</a>
+            <a href="#courses" class="text-white hover:text-neon-blue transition-colors">Courses</a>
+            <a href="#contact" class="text-white hover:text-neon-blue transition-colors">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 px-6 relative">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 neon-text-blue">Hamid Khan</h1>
+                <h2 class="text-2xl md:text-3xl mb-6 neon-text-pink">Data Analyst | Developer | Educator</h2>
+                <p class="text-lg mb-8 max-w-lg">7+ years teaching experience in Computer Science. Managing Director of <span class="neon-text-blue">The Rustam Academy</span> offering cutting-edge IT courses.</p>
+                <div class="flex space-x-4">
+                    <button onclick="openEnrollModal()" class="px-6 py-3 bg-neon-blue text-black font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all glow-button">
+                        Enroll Now
+                    </button>
+                    <a href="#courses" class="px-6 py-3 border-2 border-neon-pink text-white font-bold rounded-full hover:bg-neon-pink hover:text-black transition-all">
+                        Explore Courses
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 floating">
+                    <div class="absolute inset-0 rounded-full bg-neon-blue blur-xl opacity-30 animate-pulse"></div>
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                         alt="Hamid Khan" 
+                         class="w-full h-full object-cover rounded-full border-4 border-neon-blue relative z-10">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-black bg-opacity-50 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 neon-text-pink section-title">
+                About <span class="neon-text-blue">Me</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl neon-border-blue">
+                    <h3 class="text-2xl font-bold mb-4 neon-text-blue">Education</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="text-neon-pink mr-4 mt-1">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">BS Computer Science</h4>
+                                <p>Islamia College University Peshawar</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="text-neon-pink mr-4 mt-1">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">MS Computer Science</h4>
+                                <p>Abdul Wali Khan University Mardan</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl neon-border-pink">
+                    <h3 class="text-2xl font-bold mb-4 neon-text-pink">Experience</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <div class="text-neon-blue mr-4 mt-1">
+                                <i class="fas fa-chalkboard-teacher"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">7+ Years Teaching</h4>
+                                <p>College, FSc, BS, DIT at AWKUM</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="text-neon-blue mr-4 mt-1">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Managing Director</h4>
+                                <p>The Rustam Academy</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="bg-gray-900 bg-opacity-70 p-8 rounded-xl neon-border-blue">
+                    <h3 class="text-2xl font-bold mb-4 neon-text-blue">Skills</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-neon-blue bg-opacity-20 text-neon-blue rounded-full hover:bg-opacity-100 hover:text-black transition-all">Data Analysis</span>
+                        <span class="px-3 py-1 bg-neon-pink bg-opacity-20 text-neon-pink rounded-full hover:bg-opacity-100 hover:text-black transition-all">Web Dev</span>
+                        <span class="px-3 py-1 bg-neon-blue bg-opacity-20 text-neon-blue rounded-full hover:bg-opacity-100 hover:text-black transition-all">Database Admin</span>
+                        <span class="px-3 py-1 bg-neon-pink bg-opacity-20 text-neon-pink rounded-full hover:bg-opacity-100 hover:text-black transition-all">Android Dev</span>
+                        <span class="px-3 py-1 bg-neon-blue bg-opacity-20 text-neon-blue rounded-full hover:bg-opacity-100 hover:text-black transition-all">Desktop Apps</span>
+                        <span class="px-3 py-1 bg-neon-pink bg-opacity-20 text-neon-pink rounded-full hover:bg-opacity-100 hover:text-black transition-all">Teaching</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section id="teachers" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 neon-text-blue section-title">
+                Our <span class="neon-text-pink">Faculty</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Teacher 1 -->
+                <div class="teacher-card bg-gray-900 bg-opacity-70 rounded-xl overflow-hidden neon-border-blue">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Hamid Khan" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Mr. Hamid Khan</h3>
+                        <p class="text-neon-blue mb-3">Managing Director</p>
+                        <p class="text-gray-400 text-sm">MS Computer Science, 7+ years teaching experience</p>
+                        <button onclick="openEnrollModal()" class="mt-4 px-4 py-2 bg-neon-blue text-black font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all glow-button">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Teacher 2 -->
+                <div class="teacher-card bg-gray-900 bg-opacity-70 rounded-xl overflow-hidden neon-border-pink">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=712&q=80" 
+                             alt="Hewa Gul" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Mr. Hewa Gul</h3>
+                        <p class="text-neon-pink mb-3">Senior Instructor</p>
+                        <p class="text-gray-400 text-sm">Specialized in Web Development</p>
+                        <button onclick="openEnrollModal()" class="mt-4 px-4 py-2 bg-neon-pink text-black font-bold rounded-full hover:shadow-lg hover:shadow-pink-500/50 transition-all glow-button">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Teacher 3 -->
+                <div class="teacher-card bg-gray-900 bg-opacity-70 rounded-xl overflow-hidden neon-border-blue">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=761&q=80" 
+                             alt="Miss Mona" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Miss Mona</h3>
+                        <p class="text-neon-blue mb-3">English Instructor</p>
+                        <p class="text-gray-400 text-sm">Specialized in ESL/EFL</p>
+                        <button onclick="openEnrollModal()" class="mt-4 px-4 py-2 bg-neon-blue text-black font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all glow-button">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Teacher 4 -->
+                <div class="teacher-card bg-gray-900 bg-opacity-70 rounded-xl overflow-hidden neon-border-pink">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Awais Sir" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Mr. Awais</h3>
+                        <p class="text-neon-pink mb-3">Graphic Design Expert</p>
+                        <p class="text-gray-400 text-sm">Adobe Certified Instructor</p>
+                        <button onclick="openEnrollModal()" class="mt-4 px-4 py-2 bg-neon-pink text-black font-bold rounded-full hover:shadow-lg hover:shadow-pink-500/50 transition-all glow-button">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Teacher 5 -->
+                <div class="teacher-card bg-gray-900 bg-opacity-70 rounded-xl overflow-hidden neon-border-blue">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Asfandiyar Rahman" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Mr. Asfandiyar</h3>
+                        <p class="text-neon-blue mb-3">Programming Expert</p>
+                        <p class="text-gray-400 text-sm">Specialized in Python & Java</p>
+                        <button onclick="openEnrollModal()" class="mt-4 px-4 py-2 bg-neon-blue text-black font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all glow-button">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Teacher 6 -->
+                <div class="teacher-card bg-gray-900 bg-opacity-70 rounded-xl overflow-hidden neon-border-pink">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Zeeshan Hussain" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Mr. Zeeshan</h3>
+                        <p class="text-neon-pink mb-3">Web Development</p>
+                        <p class="text-gray-400 text-sm">Full Stack Developer</p>
+                        <button onclick="openEnrollModal()" class="mt-4 px-4 py-2 bg-neon-pink text-black font-bold rounded-full hover:shadow-lg hover:shadow-pink-500/50 transition-all glow-button">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Teacher 7 -->
+                <div class="teacher-card bg-gray-900 bg-opacity-70 rounded-xl overflow-hidden neon-border-blue">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                             alt="Anas Shah" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Mr. Anas Shah</h3>
+                        <p class="text-neon-blue mb-3">Database Expert</p>
+                        <p class="text-gray-400 text-sm">SQL & NoSQL Specialist</p>
+                        <button onclick="openEnrollModal()" class="mt-4 px-4 py-2 bg-neon-blue text-black font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all glow-button">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Teacher 8 -->
+                <div class="teacher-card bg-gray-900 bg-opacity-70 rounded-xl overflow-hidden neon-border-pink">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542190891-2093d38760f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=772&q=80" 
+                             alt="Additional Teacher" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Our Team</h3>
+                        <p class="text-neon-pink mb-3">Support Faculty</p>
+                        <p class="text-gray-400 text-sm">Dedicated teaching assistants</p>
+                        <button onclick="openEnrollModal()" class="mt-4 px-4 py-2 bg-neon-pink text-black font-bold rounded-full hover:shadow-lg hover:shadow-pink-500/50 transition-all glow-button">
+                            Enroll Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 bg-black bg-opacity-50 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 neon-text-pink section-title">
+                Our <span class="neon-text-blue">Courses</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- English Language -->
+                <div class="course-card bg-gray-900 bg-opacity-70 rounded-xl p-6 neon-border-blue hover:neon-border-pink transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold">English Language</h3>
+                        <span class="px-3 py-1 bg-neon-blue text-black text-xs rounded-full">3 Months</span>
+                    </div>
+                    <ul class="space-y-2 mb-4">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-neon-pink mr-2"></i>
+                            <span>Spoken English (3 Months)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-neon-pink mr-2"></i>
+                            <span>EFL (3 Months)</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-neon-pink mr-2"></i>
+                            <span>ESL (4 Months)</span>
+                        </li>
+                    </ul>
+                    <button onclick="openEnrollModal()" class="w-full px-4 py-2 bg-neon-blue text-black font-bold rounded-full hover:bg-neon-pink hover:text-white transition-all glow-button">
+                        Enroll Now
+                    </button>
+                </div>
+                
+                <!-- MS Office -->
+                <div class="course-card bg-gray-900 bg-opacity-70 rounded-xl p-6 neon-border-pink hover:neon-border-blue transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold">MS Office</h3>
+                        <span class="px-3 py-1 bg-neon-pink text-black text-xs rounded-full">3 Months</span>
+                    </div>
+                    <p class="mb-4">Master Word, Excel, PowerPoint, and Outlook for professional productivity.</p>
+                    <button onclick="openEnrollModal()" class="w-full px-4 py-2 bg-neon-pink text-black font-bold rounded-full hover:bg-neon-blue hover:text-white transition-all glow-button">
+                        Enroll Now
+                    </button>
+                </div>
+                
+                <!-- Graphic Designing -->
+                <div class="course-card bg-gray-900 bg-opacity-70 rounded-xl p-6 neon-border-blue hover:neon-border-pink transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold">Graphic Designing</h3>
+                        <span class="px-3 py-1 bg-neon-blue text-black text-xs rounded-full">3 Months</span>
+                    </div>
+                    <p class="mb-4">Learn Photoshop, Illustrator, and CorelDRAW for professional design work.</p>
+                    <button onclick="openEnrollModal()" class="w-full px-4 py-2 bg-neon-blue text-black font-bold rounded-full hover:bg-neon-pink hover:text-white transition-all glow-button">
+                        Enroll Now
+                    </button>
+                </div>
+                
+                <!-- Web Designing -->
+                <div class="course-card bg-gray-900 bg-opacity-70 rounded-xl p-6 neon-border-pink hover:neon-border-blue transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold">Web Designing</h3>
+                        <span class="px-3 py-1 bg-neon-pink text-black text-xs rounded-full">3 Months</span>
+                    </div>
+                    <p class="mb-4">HTML5, CSS3, JavaScript, and Bootstrap for modern website design.</p>
+                    <button onclick="openEnrollModal()" class="w-full px-4 py-2 bg-neon-pink text-black font-bold rounded-full hover:bg-neon-blue hover:text-white transition-all glow-button">
+                        Enroll Now
+                    </button>
+                </div>
+                
+                <!-- Web Development -->
+                <div class="course-card bg-gray-900 bg-opacity-70 rounded-xl p-6 neon-border-blue hover:neon-border-pink transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold">Web Development</h3>
+                        <span class="px-3 py-1 bg-neon-blue text-black text-xs rounded-full">3 Months</span>
+                    </div>
+                    <p class="mb-4">PHP, MySQL, and React for full-stack web development.</p>
+                    <button onclick="openEnrollModal()" class="w-full px-4 py-2 bg-neon-blue text-black font-bold rounded-full hover:bg-neon-pink hover:text-white transition-all glow-button">
+                        Enroll Now
+                    </button>
+                </div>
+                
+                <!-- Video Editing -->
+                <div class="course-card bg-gray-900 bg-opacity-70 rounded-xl p-6 neon-border-pink hover:neon-border-blue transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold">Video Editing</h3>
+                        <span class="px-3 py-1 bg-neon-pink text-black text-xs rounded-full">3 Months</span>
+                    </div>
+                    <p class="mb-4">Premiere Pro, After Effects, and DaVinci Resolve for professional video production.</p>
+                    <button onclick="openEnrollModal()" class="w-full px-4 py-2 bg-neon-pink text-black font-bold rounded-full hover:bg-neon-blue hover:text-white transition-all glow-button">
+                        Enroll Now
+                    </button>
+                </div>
+                
+                <!-- DIT -->
+                <div class="course-card bg-gray-900 bg-opacity-70 rounded-xl p-6 neon-border-blue hover:neon-border-pink transition-all duration-300">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold">Diploma in IT</h3>
+                        <span class="px-3 py-1 bg-neon-blue text-black text-xs rounded-full">1 Year</span>
+                    </div>
+                    <p class="mb-4">Comprehensive IT training covering hardware, software, networking, and programming.</p>
+                    <button onclick="openEnrollModal()" class="w-full px-4 py-2 bg-neon-blue text-black font-bold rounded-full hover:bg-neon-pink hover:text-white transition-all glow-button">
+                        Enroll Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 neon-text-blue section-title">
+                Contact <span class="neon-text-pink">Us</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <div class="bg-gray-900 bg-opacity-70 rounded-xl p-8 neon-border-pink">
+                        <h3 class="text-2xl font-bold mb-6 neon-text-pink">Academy Details</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-neon-blue text-xl mr-4 mt-1">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Timings</h4>
+                                    <p>2:30 PM - 7:00 PM</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-neon-blue text-xl mr-4 mt-1">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <a href="mailto:mrhamidkhan8@gmail.com" class="contact-link text-neon-blue">
+                                        mrhamidkhan8@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-neon-blue text-xl mr-4 mt-1">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Phone</h4>
+                                    <a href="tel:+923415550376" class="contact-link text-neon-blue block">
+                                        +92 341 5550376
+                                    </a>
+                                    <a href="tel:+92068944144" class="contact-link text-neon-blue block">
+                                        +92 068 944144
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="bg-gray-900 bg-opacity-70 rounded-xl p-8 neon-border-blue">
+                        <h3 class="text-2xl font-bold mb-6 neon-text-blue">Send a Message</h3>
+                        
+                        <form id="contact-form" action="https://formsubmit.co/dear.virus.420@gmail.com" method="POST" class="space-y-6">
+                            <input type="hidden" name="_subject" value="New Contact Form Submission">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="#thankyou">
+                            
+                            <div>
+                                <input type="text" name="name" placeholder="Your Name" required class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon-blue input-field">
+                            </div>
+                            
+                            <div>
+                                <input type="email" name="email" placeholder="Your Email" required class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon-blue input-field">
+                            </div>
+                            
+                            <div>
+                                <input type="text" name="subject" placeholder="Subject" class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon-blue input-field">
+                            </div>
+                            
+                            <div>
+                                <textarea name="message" rows="5" placeholder="Your Message" required class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon-blue input-field"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full px-6 py-3 bg-neon-blue text-black font-bold rounded-full hover:shadow-lg hover:shadow-cyan-500/50 transition-all glow-button">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="relative h-96 w-full">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.367662029344!2d71.5183153152146!3d34.05298098060866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38d91b1a8e4f1a5d%3A0x9a1e5b8e7d8f2b0e!2sRustam%20%E2%80%93%20Buner%20Rd%2C%20Pakistan!5e0!3m2!1sen!2s!4v1620000000000!5m2!1sen!2s" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy"
+            class="filter grayscale contrast-125 brightness-90 hover:grayscale-0 transition-all duration-500">
+        </iframe>
+        
+        <button id="directions-btn" class="absolute bottom-6 left-1/2 transform -translate-x-1/2 px-6 py-3 bg-neon-pink text-black font-bold rounded-full hover:shadow-lg hover:shadow-pink-500/50 transition-all glow-button">
+            <i class="fas fa-directions mr-2"></i> Directions from My Location
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-black bg-opacity-80 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#" class="text-2xl text-gray-400 hover:text-neon-blue transition-colors">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" class="text-2xl text-gray-400 hover:text-neon-blue transition-colors">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="text-2xl text-gray-400 hover:text-neon-blue transition-colors">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="text-2xl text-gray-400 hover:text-neon-blue transition-colors">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+            
+            <p class="text-gray-400 mb-4">© 2023 The Rustam Academy. All rights reserved.</p>
+            <p class="text-gray-500 text-sm">Managed by Hamid Khan</p>
+        </div>
+    </footer>
+
+    <!-- Enroll Modal -->
+    <div id="enroll-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('enroll-modal')">&times;</span>
+            <h2 class="text-2xl font-bold mb-6 neon-text-blue">Enrollment Form</h2>
+            <form id="enroll-form" action="https://formsubmit.co/dear.virus.420@gmail.com" method="POST" class="space-y-6">
+                <input type="hidden" name="_subject" value="New Enrollment Request">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="#thankyou">
+                
+                <div>
+                    <input type="text" name="name" placeholder="Full Name" required class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon-blue input-field">
+                </div>
+                
+                <div>
+                    <input type="email" name="email" placeholder="Email Address" required class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon-blue input-field">
+                </div>
+                
+                <div>
+                    <input type="tel" name="phone" placeholder="Phone Number" required class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon-blue input-field">
+                </div>
+                
+                <div>
+                    <select name="course" required class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon-blue input-field">
+                        <option value="">Select Course</option>
+                        <option value="English Language">English Language</option>
+                        <option value="MS Office">MS Office</option>
+                        <option value="Graphic Designing">Graphic Designing</option>
+                        <option value="Web Designing">Web Designing</option>
+                        <option value="Web Development">Web Development</option>
+                        <option value="Video Editing">Video Editing</option>
+                        <option value="DIT">Diploma in IT</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <textarea name="message" rows="3" placeholder="Additional Information" class="w-full px-4 py-3 bg-gray-800 bg-opacity-50 border border-gray-700 rounded-lg focus:outline-none focus:border-neon-blue input-field"></textarea>
+                </div>
+                
+                <button type="submit" class="w-full px-6 py-3 bg-neon-pink text-black font-bold rounded-full hover:shadow-lg hover:shadow-pink-500/50 transition-all glow-button">
+                    Submit Enrollment
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Thank You Modal -->
+    <div id="thankyou-modal" class="modal">
+        <div class="modal-content text-center">
+            <span class="close-modal" onclick="closeModal('thankyou-modal')">&times;</span>
+            <div class="text-6xl text-neon-blue mb-4">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2 class="text-3xl font-bold mb-4 neon-text-pink">Thank You!</h2>
+            <p class="text-xl mb-6">Your submission has been received.</p>
+            <p class="text-gray-400">We will contact you within 24 hours. For immediate assistance, call us at <a href="tel:+923415550376" class="text-neon-blue">+92 341 5550376</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Initialize particles.js with enhanced settings
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { 
+                    "value": 150, 
+                    "density": { 
+                        "enable": true, 
+                        "value_area": 800 
+                    } 
+                },
+                "color": { 
+                    "value": ["#05d9e8", "#ff2a6d", "#d300c5"] 
+                },
+                "shape": { 
+                    "type": "circle",
+                    "stroke": {
+                        "width": 0,
+                        "color": "#000000"
+                    }
+                },
+                "opacity": {
+                    "value": 0.7,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 1,
+                        "opacity_min": 0.1,
+                        "sync": false
+                    }
+                },
+                "size": {
+                    "value": 4,
+                    "random": true,
+                    "anim": {
+                        "enable": true,
+                        "speed": 4,
+                        "size_min": 0.3,
+                        "sync": false
+                    }
+                },
+                "line_linked": {
+                    "enable": true,
+                    "distance": 200,
+                    "color": "#05d9e8",
+                    "opacity": 0.4,
+                    "width": 1
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 4,
+                    "direction": "none",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": true,
+                        "rotateX": 600,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": {
+                    "onhover": {
+                        "enable": true,
+                        "mode": "grab",
+                        "distance": 300
+                    },
+                    "onclick": {
+                        "enable": true,
+                        "mode": "push",
+                        "distance": 200
+                    },
+                    "resize": true
+                },
+                "modes": {
+                    "grab": {
+                        "distance": 300,
+                        "line_linked": {
+                            "opacity": 1
+                        }
+                    },
+                    "bubble": {
+                        "distance": 400,
+                        "size": 40,
+                        "duration": 2,
+                        "opacity": 8,
+                        "speed": 3
+                    },
+                    "repulse": {
+                        "distance": 200,
+                        "duration": 0.4
+                    },
+                    "push": {
+                        "particles_nb": 6
+                    },
+                    "remove": {
+                        "particles_nb": 2
+                    }
+                }
+            },
+            "retina_detect": true
+        });
+
+        // Modal Functions
+        function openEnrollModal() {
+            document.getElementById('enroll-modal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Form Submission
+        document.getElementById('enroll-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simulate form submission
+            setTimeout(function() {
+                closeModal('enroll-modal');
+                document.getElementById('thankyou-modal').style.display = 'block';
+            }, 1000);
+            
+            // Actual form submission would happen here
+            this.submit();
+        });
+
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simulate form submission
+            setTimeout(function() {
+                document.getElementById('thankyou-modal').style.display = 'block';
+            }, 1000);
+            
+            // Actual form submission would happen here
+            this.submit();
+        });
+
+        // Directions Button
+        document.getElementById('directions-btn').addEventListener('click', function() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const userLat = position.coords.latitude;
+                        const userLng = position.coords.longitude;
+                        const academyLat = 34.34703779393888;
+                        const academyLng = 72.28322182514127;
+                        
+                        window.open(
+                            `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${academyLat},${academyLng}&travelmode=driving`,
+                            '_blank'
+                        );
+                    },
+                    function() {
+                        window.open(
+                            "https://www.google.com/maps/dir/?api=1&destination=34.34703779393888,72.28322182514127",
+                            '_blank'
+                        );
+                    }
+                );
+            } else {
+                window.open(
+                    "https://www.google.com/maps/dir/?api=1&destination=34.34703779393888,72.28322182514127",
+                    '_blank'
+                );
+            }
+        });
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (!document.getElementById('mobile-menu').classList.contains('hidden')) {
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
