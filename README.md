@@ -59,7 +59,7 @@ open index.html
 **Syed Muhammad Khubaib Shah aka Dear Virus**  
 💻 *Cyber Developer* | 🎨 *Digital Artist* | 🚀 *Tech Enthusiast*
 
-📱 Phone: `+92 709 213915`  
+📱 Phone: `+92 370 9213915`  
 📧 Email: `dear.virus.420@gmail.com`  
 📸 Instagram: [@dearvirus55](https://instagram.com/dearvirus55)  
 📨 Telegram: [@dear_virus](https://t.me/dear_virus)
